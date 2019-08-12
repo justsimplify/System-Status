@@ -1,0 +1,7 @@
+django
+pika
+djongo
+dataclasses-json
+dnspython
+requests[security]
+sqlparse==0.2.4

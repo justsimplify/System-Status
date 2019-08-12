@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>System Status</title>
+</head>
+<body>
+    <div class="container">
+        {% include 'frontendApp/navigation.html' %}
+        <table class="striped highlight">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>URL</th>
+                    <th>Interval</th>
+                    <th>Wait time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="vals">
+                {% verbatim %}
+                <tr v-for="d in message" v-bind:class="d.pk">
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.description }}</td>
+                    <td>{{ d.pingUrl }}</td>
+                    <td>{{ d.interval }}</td>
+                    <td>{{ d.waitTime }}</td>
+                    <td><span class="status">{{ d.status == true ? 'Up' : 'Down' }}</span></td>
+                </tr>
+                {% endverbatim %}
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
+<script src="/assets/js/script.js"></script>
+</html>
